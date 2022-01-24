@@ -1,6 +1,5 @@
-- 安装组件库
-  npm add one-ui
+- 安装
+  npm instal
 
-- 全局导入
-  import CheckPerson form '../packages'
-  Vue.use(CheckPerson)
+- 启动
+  npm run serve
