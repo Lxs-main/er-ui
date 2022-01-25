@@ -1,6 +1,6 @@
 <template>
   <div id="DeptSelEmp">
-    <div class="select-member-area" style="margin: 0 auto;padding-bottom: 30px">
+    <div class="select-member-area" style="margin: 0 auto;padding-bottom: 30px;box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);border-radius: 5px;border: 0;">
       <div class="row select-member-panel">
         <div class="member-all">
           <div class="member-panel-header">
