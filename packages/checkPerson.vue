@@ -1,6 +1,6 @@
 <template>
   <div id="DeptSelEmp">
-    <div class="select-member-area">
+    <div class="select-member-area" style="margin: 80px auto;padding-bottom: 30px">
       <div class="row select-member-panel">
         <div class="member-all">
           <div class="member-panel-header">
@@ -117,9 +117,8 @@
           </div>
         </div>
       </div>
-      <div class="member-action">
-        <button class="btn btn-primary" v-on:click="saveData()">保存</button>
-        <button class="btn btn-link" id="cancelSelEmp">取消</button>
+      <div class="member-action" style="text-align: right;margin-bottom: 0">
+        <button class="btn btn-primary" v-on:click="saveData()">确认选择</button>
       </div>
     </div>
   </div>
@@ -227,14 +226,4 @@ export default {
 </script>
 <style>
 @import "./css/shared.min.css";
-.error-check{
-  text-align: center;
-  color: #FFFFFF;
-  background: #F56C6C;
-  height: 28px;
-  line-height: 28px;
-  width: 182px;
-  margin: 0 auto;
-  border-radius: 6px;
-}
 </style>
