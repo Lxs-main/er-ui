@@ -224,6 +224,6 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 @import "./css/shared.min.css";
 </style>
