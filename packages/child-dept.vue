@@ -1,5 +1,5 @@
 <template>
-  <li v-on:click.stop="expandTree()" v-on:dblclick="expandTree()">
+  <li v-on:click.stop="expandTree()">
     <a v-bind:class="lvl | level">
       <span class="expand-tree-icon">
         <i class="one-icon-caret-right" style="display: inline-block;margin-top: 5px;font-size: 16px"
