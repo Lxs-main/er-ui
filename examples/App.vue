@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <check-person :empList="empList" :deptList="deptList" :rootDept="rootDept" :isCheckOne="isCheckOne" @saveData="getResultCheck"></check-person>
+    <label>aaaaaaaaaaaaaa</label>
   </div>
 </template>
 

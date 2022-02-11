@@ -18,7 +18,7 @@
             <div v-show="showType == 1">
               <div class="search-container">
                 <div class="search-area-modal">
-                  <i class="fa fa-search one-icon-search"></i>
+                  <i class="one-icon-search"></i>
                   <input type="text" placeholder="搜索成员..." v-model="searchKey"/>
                 </div>
                 <a href="javascript:;" class="btn-action" v-on:click.self="selectAll()">添加全部</a>
@@ -48,15 +48,15 @@
                 <li>
                   <a class="lvl0" v-on:click="rootNodeExpand = !rootNodeExpand" v-on:dblclick="rootNodeExpand = !rootNodeExpand">
                     <span class="expand-tree-icon">
-                      <i class="fa fa-caret-right one-icon-caret-right" v-bind:class="{ active: rootNodeExpand }"></i>
+                      <i class="one-icon-caret-right" style="display: inline-block;margin-top: 5px;font-size: 16px" v-bind:class="{ active: rootNodeExpand }"></i>
                     </span>
                     <span>
-                      <i class="lcfont lc-department-o one-icon-company"></i>
+                      <i class="one-icon-company" style="margin-top: 5px;display: inline-block;font-size: 20px;"></i>
                     </span>
                     <span class="title">
                       <span>{{rootDept}}</span>
                       <span class="title-desc">( {{ empList.length }}人 )</span>
-                      <i class="lcfont lc-add one-icon-add" title="添加整个部门成员" v-on:click.stop="selectAll()"></i>
+                      <i class="one-add one-icon-add" title="添加整个部门成员" v-on:click.stop="selectAll()"></i>
                     </span>
                   </a>
                   <ul v-show="rootNodeExpand">
@@ -81,11 +81,12 @@
             </div>
           </div>
         </div>
-        <div class="member-arrow"><i class="fa fa-angle-right one-icon-arrow-right"></i></div>
+        <div class="member-arrow"><i class="one-icon-arrow-right" style="font-size: 25px"></i></div>
         <div class="member-selected">
           <div class="member-panel-header">
             <span>已选择成员</span>
             <span class="header-meta">({{ getCheckedEmp().length }})</span>
+            <button class="one-clear-btn" style="" v-on:click="clearPerson()">清空人员</button>
           </div>
           <div class="member-panel-body">
             <div>
@@ -103,7 +104,7 @@
                       </div>
                     </div>
                     <span href="javascript:;" class="btn-link-remove">
-                      <i v-on:click="selectEmp(emp)" class="lcfont lc-close one-icon-close"></i>
+                      <i v-on:click="selectEmp(emp)" class="one-icon-close" style="position:absolute;top:10px;right: 7px;font-size: 12px;"></i>
                     </span>
                   </li>
                 </template>
@@ -221,9 +222,42 @@ export default {
       });
       this.$emit('saveData',arr)
     },
+    clearPerson() {
+      const _this = this;
+      _this.empList.forEach(function (item, index) {
+        debugger
+        _this.$delete(item, 'checked');
+      });
+    }
   },
 };
 </script>
-<style scoped>
+<!--<style scoped>
 @import "./css/shared.min.css";
+</style>-->
+<style scoped>
+li a i.one-add {
+  display: none;
+  font-size: 12px;
+}
+
+li a:hover i.one-add {
+  display: inline-block;
+}
+.one-clear-btn{
+  width: 75px;
+  height: 28px;
+  font-size: 12px;
+  float: right;
+  border-radius: 15px;
+  border: 1px solid #a6a9ad;
+  color: #fff;
+  background-color: #a6a9ad;
+}
+
+.one-clear-btn:hover{
+  background-color: #b5b9bd;
+}
 </style>
+<style scoped src="./css/shared.min.css"/>
+

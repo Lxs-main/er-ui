@@ -5,14 +5,13 @@
         <div class="lc-avatar-30" title="emp.EmployeeName">
           <span
             class="lc-avatar-def"
-            style="background-color: rgb(112, 118, 142)"
-          >
+            style="background-color: rgb(112, 118, 142)">
             <div>{{ emp.EmployeeName }}</div>
           </span>
           <div class="lc-avatar-name">{{ emp.EmployeeName }}</div>
         </div>
       </div>
-      <i class="lcfont" v-bind:class="{ 'one-icon-select': emp.checked }"></i>
+      <i v-bind:class="{ 'one-icon-select': emp.checked }"></i>
     </a>
   </li>
 </template>
@@ -35,3 +34,4 @@ export default {
   },
 };
 </script>
+<style lang="css" scoped src="./css/shared.min.css"/>

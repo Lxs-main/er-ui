@@ -1,43 +1,41 @@
 <template>
   <li v-on:click.stop="expandTree()" v-on:dblclick="expandTree()">
-    <a v-bind:class="lvl | level"
-      ><span class="expand-tree-icon">
-        <i class="fa fa-caret-right one-icon-caret-right" v-bind:class="{ active: dept.rootNodeExpand }"></i></span
-      ><span><i  class="lcfont lc-department-o one-icon-company"></i> </span
-      ><span class="title"
-        ><span>{{ dept.name }}</span
-        ><span class="title-desc"
-          >({{ getAllChildEmp(dept.id).length }}人 )</span
-        ><i
-          class="lcfont lc-add one-icon-add"
-          v-on:click.stop="selectDeptEmp(dept.id)"
-          title="添加整个部门成员"
-        ></i></span
-    ></a>
+    <a v-bind:class="lvl | level">
+      <span class="expand-tree-icon">
+        <i class="one-icon-caret-right" style="display: inline-block;margin-top: 5px;font-size: 16px"
+           v-bind:class="{ active: dept.rootNodeExpand }"></i></span>
+      <span>
+        <i class="one-icon-company" style="margin-top: 5px;display: inline-block;font-size: 20px;"></i>
+      </span>
+      <span class="title">
+        <span>{{ dept.name }}</span>
+        <span class="title-desc">({{ getAllChildEmp(dept.id).length }}人 )</span>
+        <i class="one-add one-icon-add" v-on:click.stop="selectDeptEmp(dept.id)" title="添加整个部门成员"></i>
+      </span>
+    </a>
     <ul v-show="dept.rootNodeExpand">
       <ChildEmp
-        v-for="(emp,index) in getChildEmp(dept.id)" :key="index+'emp'"
-        v-bind:emp="emp"
-        v-bind:allemp="allemp"
-        v-bind:lvl="lvl + 1"
-     />
+          v-for="(emp,index) in getChildEmp(dept.id)" :key="index+'emp'"
+          v-bind:emp="emp"
+          v-bind:allemp="allemp"
+          v-bind:lvl="lvl + 1"/>
       <child-dept
-        v-for="(dept,index) in getChildDept(dept.id)"
-        :key="index+'dept'"
-        v-bind:dept="dept"
-        v-bind:allemp="allemp"
-        v-bind:alldept="alldept"
-        v-bind:lvl="lvl + 1"
-      ></child-dept>
+          v-for="(dept,index) in getChildDept(dept.id)"
+          :key="index+'dept'"
+          v-bind:dept="dept"
+          v-bind:allemp="allemp"
+          v-bind:alldept="alldept"
+          v-bind:lvl="lvl + 1"/>
     </ul>
   </li>
 </template>
 <script>
 import ChildEmp from "./child-emp"
+
 export default {
-  name:"child-dept",
+  name: "child-dept",
   props: ["dept", "allemp", "alldept", "lvl"],
-  components:{ChildEmp},
+  components: {ChildEmp},
   filters: {
     level: function (le) {
       return "lvl" + le;
@@ -96,3 +94,14 @@ export default {
   },
 };
 </script>
+<style scoped>
+li a i.one-add {
+  display: none;
+  font-size: 12px;
+}
+
+li a:hover i.one-add {
+  display: inline-block;
+}
+</style>
+<style scoped src="./css/shared.min.css"/>
