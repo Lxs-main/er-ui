@@ -159,7 +159,6 @@ export default {
   },
   methods: {
     getResultCheck(arr){
-      debugger;
     }
   }
 }

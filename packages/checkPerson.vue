@@ -225,7 +225,6 @@ export default {
     clearPerson() {
       const _this = this;
       _this.empList.forEach(function (item, index) {
-        debugger
         _this.$delete(item, 'checked');
       });
     }
