@@ -26,7 +26,11 @@ export default {
   methods: {
     selectEmp(emp) {
       if (typeof emp.checked == "undefined") {
-        this.$set(emp, "checked", true);
+        if (! (this.isCheckOne && this.getCheckedEmp().length >= 1)) {
+          this.$set(emp, "checked", true);
+        } else{
+          this.$message.error('当前只能选择一个人员!');
+        }
       } else {
         emp.checked = !emp.checked;
       }
