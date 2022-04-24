@@ -66,6 +66,7 @@
                       v-bind:emp="emp"
                       v-bind:allemp="empList"
                       v-bind:lvl="1"
+                      :isCheckOne="isCheckOne"
                     />
                     <ChildDept
                       v-for="(dept, index) in getChildDept(0)"
@@ -74,6 +75,7 @@
                       v-bind:allemp="empList"
                       v-bind:alldept="deptList"
                       v-bind:lvl="1"
+                      :isCheckOne="isCheckOne"
                     />
                   </ul>
                 </li>

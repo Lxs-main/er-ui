@@ -18,7 +18,8 @@
           v-for="(emp,index) in getChildEmp(dept.id)" :key="index+'emp'"
           v-bind:emp="emp"
           v-bind:allemp="allemp"
-          v-bind:lvl="lvl + 1"/>
+          v-bind:lvl="lvl + 1"
+          :isCheckOne="isCheckOne"/>
       <child-dept
           v-for="(dept,index) in getChildDept(dept.id)"
           :key="index+'dept'"
@@ -34,7 +35,7 @@ import ChildEmp from "./child-emp"
 
 export default {
   name: "child-dept",
-  props: ["dept", "allemp", "alldept", "lvl"],
+  props: ["dept", "allemp", "alldept", "lvl", "isCheckOne"],
   components: {ChildEmp},
   filters: {
     level: function (le) {
@@ -43,6 +44,10 @@ export default {
   },
   methods: {
     selectDeptEmp(deptId) {
+      if (this.isCheckOne){
+        this.$message.error('当前只能选择一个人员!');
+        return;
+      }
       var _this = this;
       _this.allemp.forEach(function (item, index) {
         if (item.DepartId == deptId) {

@@ -17,7 +17,7 @@
 </template>
 <script>
 export default {
-  props: ["emp", "allemp", "lvl"],
+  props: ["emp", "allemp", "lvl", "isCheckOne"],
   filters: {
     level: function (le) {
       return "lvl" + le;
@@ -34,6 +34,11 @@ export default {
       } else {
         emp.checked = !emp.checked;
       }
+    },
+    getCheckedEmp() {
+      return this.allemp.filter(function (item) {
+        return item.checked === true;
+      });
     },
   },
 };
