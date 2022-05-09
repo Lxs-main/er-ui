@@ -140,7 +140,7 @@ export default {
       type: Array,
       default: () => [],
     },
-    empList: {
+    empList1: {
       type: Array,
       default: () => [],
     },
@@ -159,6 +159,8 @@ export default {
       showType: 1,
       rootNodeExpand: true,
       searchKey: "",
+      empList:[]
+
     };
   },
   computed: {
@@ -174,6 +176,9 @@ export default {
     },
   },
 
+  mounted() {
+      this.empList=JSON.parse(JSON.stringify(this.empList1))
+  },
   methods: {
     changeSelType(selType) {
       this.showType = selType;
@@ -186,12 +191,23 @@ export default {
           this.$message.error('当前只能选择一个人员!');
         }
       } else {
-        emp.checked = !emp.checked;
+        if (!emp.checked) {
+          if (! (this.isCheckOne && this.getCheckedEmp().length >= 1)) {
+            emp.checked = !emp.checked;
+          }else {
+            this.$message.error('当前只能选择一个人员!');
+          }
+        } else {
+          emp.checked = !emp.checked;
+        }
       }
-
     },
     selectAll() {
       var _this = this;
+      if (this.isCheckOne){
+        this.$message.error('当前只能选择一个人员!');
+        return;
+      }
       this.empList.forEach(function (item, index) {
         if (typeof item.checked == "undefined" || !item.checked) {
           _this.$set(item, "checked", true);

@@ -26,7 +26,8 @@
           v-bind:dept="dept"
           v-bind:allemp="allemp"
           v-bind:alldept="alldept"
-          v-bind:lvl="lvl + 1"/>
+          v-bind:lvl="lvl + 1"
+          :isCheckOne="isCheckOne"/>
     </ul>
   </li>
 </template>

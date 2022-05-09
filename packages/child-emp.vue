@@ -32,7 +32,15 @@ export default {
           this.$message.error('当前只能选择一个人员!');
         }
       } else {
-        emp.checked = !emp.checked;
+        if (!emp.checked){
+          if (! (this.isCheckOne && this.getCheckedEmp().length >= 1)) {
+            emp.checked = !emp.checked;
+          } else{
+            this.$message.error('当前只能选择一个人员!');
+          }
+        }else{
+          emp.checked = !emp.checked;
+        }
       }
     },
     getCheckedEmp() {
